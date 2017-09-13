@@ -107,5 +107,19 @@ class IndexController extends Controller {
         $data = http($this->downloadUrl,$validate_data);
         echo $data;die;
     }
+    //歌手专辑信息
+    public function albumAction() {
+        $data = $_GET;
+        $validate_params = array(
+            'from#string'       => 'android',
+            'version#string'    => '5.6.5.0',
+            'method#string'     => 'baidu.ting.album.getAlbumInfo',
+            'format#string'     => 'json',
+            'album_id#int|required'
+        );
+        $validate_data = $this->validate->check($validate_params, $data);
+        $data = http($this->downloadUrl,$validate_data);
+        echo $data;die;
+    }
 }
 ?>
