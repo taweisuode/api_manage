@@ -11,6 +11,9 @@ PS：format根据开发需要可选择json或xmml，其他参数对应填入，c
 一、获取列表
 例：method=baidu.ting.billboard.billList&type=1&size=10&offset=0
 参数：	type = 1-新歌榜,2-热歌榜,11-摇滚榜,12-爵士,16-流行,21-欧美金曲榜,22-经典老歌榜,23-情歌对唱榜,24-影视金曲榜,25-网络歌曲榜
+1.新歌 2.热歌 7.叱咤 8.公告牌 11.摇滚 12.爵士
+14.影视金曲 16.流行 18.Hito中文榜 20.华语金曲
+21.欧美金曲榜 22.经典老歌 23.情歌对唱 24.影视金曲 25.网络歌曲
 size = 10 //返回条目数量
 offset = 0 //获取偏移
 
@@ -48,3 +51,16 @@ _t = 1430215999,, //时间戳
 例：method=baidu.ting.artist.getSongList&tinguid=877578&limits=6&use_cluster=1&order=2
 参数：	tinguid = 877578//歌手ting id
 limits = 6//返回条目数量
+
+十. 获取专辑详情：
+GET
+
+http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.6.5.0&method=baidu.ting.album.getAlbumInfo&format=json&album_id=67909
+
+参数：
+
+from  android
+version   5.6.5.0
+method    baidu.ting.album.getAlbumInfo
+format    json
+album_id  67909
