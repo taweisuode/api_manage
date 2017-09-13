@@ -118,7 +118,7 @@ class IndexController extends Controller {
             'album_id#int|required'
         );
         $validate_data = $this->validate->check($validate_params, $data);
-        $data = http($this->downloadUrl,$validate_data);
+        $data = http($this->listUrl,$validate_data);
         echo $data;die;
     }
 }
