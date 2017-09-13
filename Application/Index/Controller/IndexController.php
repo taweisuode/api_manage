@@ -1,5 +1,5 @@
 <?php
-//本api才用百度音乐api
+//本api采用百度音乐api
 //可以查看Public/readme.md
 class IndexController extends Controller {
 
@@ -32,6 +32,17 @@ class IndexController extends Controller {
         $validate_params = array(
             'method#string' => 'baidu.ting.search.catalogSug',
             'query#string|required',
+        );
+        $validate_data = $this->validate->check($validate_params, $data);
+        $data = http($this->listUrl,$validate_data);
+        echo $data;die;
+    }
+    //歌曲播放信息
+    public function playAction() {
+        $data = $_GET;
+        $validate_params = array(
+            'method#string'    => 'baidu.ting.song.play',
+            'songid#int|required',
         );
         $validate_data = $this->validate->check($validate_params, $data);
         $data = http($this->listUrl,$validate_data);

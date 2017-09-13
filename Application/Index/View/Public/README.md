@@ -44,11 +44,11 @@ bit = 24, 64, 128, 192, 256, 320 ,flac//码率
 _t = 1430215999,, //时间戳
 
 八、获取歌手信息
-例：method=baidu.ting.artist.getInfo&tinguid=877578
-参数：	tinguid = 877578 //歌手ting id
+例：method=baidu.ting.artist.getInfo&tinguid=7994
+参数：	tinguid = 7994 //歌手ting id
 
 九、获取歌手歌曲列表
-例：method=baidu.ting.artist.getSongList&tinguid=877578&limits=6&use_cluster=1&order=2
+例：method=baidu.ting.artist.getSongList&tinguid=7994&limits=6&use_cluster=1&order=2
 参数：	tinguid = 877578//歌手ting id
 limits = 6//返回条目数量
 
