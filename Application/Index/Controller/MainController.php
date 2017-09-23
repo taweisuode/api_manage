@@ -12,7 +12,7 @@ class MainController extends Controller {
         $this->view->show();
     }
     //获取列表
-    public function recomendImageAction() {
+    public function recommendImageAction() {
         $data = $_GET;
         $validate_params = array(
             'type#int|required'    => 1,
