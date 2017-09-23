@@ -6,7 +6,7 @@ class MainController extends Controller {
     public function __construct(){
 
         parent::__construct();
-        $this->recommendImageModel = new recommendImageModel();
+        $this->recommendImageModel = new RecommendImageModel();
     }
     public function indexAction() {
         $this->view->show();
