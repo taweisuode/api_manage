@@ -77,6 +77,17 @@ HTML;
         echo json_encode($return);die;
 
     }
+    public function showApiResult($data = array(),$code = 0,$desc = "") {
+        $return = array(
+            'e' =>  array(
+                'code'  => $code,
+                'desc'  => $desc
+            ),
+            'data' => $data
+        );
+        echo json_encode($return);die;
+
+    }
     public function load($path) {
         if(is_array($path)) {
             foreach($path as $key => $val) {

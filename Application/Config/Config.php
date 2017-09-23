@@ -1,4 +1,5 @@
 <?php
+define("WEBSITE_HOST","https://www.ci92.com/");
 define("APPLICATION_PATH",PPF_PATH.'/Application');
 define("LIBRARY_PATH",PPF_PATH.'/Library');
 define("DEFAULT_CONTROLLER_PATH",APPLICATION_PATH.'/Index/Controller/IndexController.php');
