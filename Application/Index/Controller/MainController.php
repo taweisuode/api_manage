@@ -36,7 +36,7 @@ class MainController extends Controller {
             $returnResult['data'][$key]['playlist_id']  = $list['playlist_id'];
             $returnResult['data'][$key]['title']        = $list['title'];
             if($list['listen_count'] > 10000) {
-                $returnResult['data'][$key]['listen_count'] = ($list['listen_count']/10000)."万";
+                $returnResult['data'][$key]['listen_count'] = intval($list['listen_count']/10000)."万";
             }else {
                 $returnResult['data'][$key]['listen_count'] = $list['listen_count'];
             }
