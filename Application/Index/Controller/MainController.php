@@ -25,7 +25,7 @@ class MainController extends Controller {
         return $this->showApiResult($list);
     }
     public function recommendSongAction() {
-        $randomKeyArr = ["浪漫","情歌","午后","摇滚","rap","失恋"];
+        $randomKeyArr = ["90后","情歌","午后","摇滚","rap","失恋"];
         shuffle($randomKeyArr);
         $url = "http://music.baidu.com/data/search/playlist";
         $returnResult = array();
@@ -35,7 +35,11 @@ class MainController extends Controller {
             $list = $data['list'][$random];
             $returnResult['data'][$key]['playlist_id']  = $list['playlist_id'];
             $returnResult['data'][$key]['title']        = $list['title'];
-            $returnResult['data'][$key]['listen_count'] = $list['listen_count'];
+            if($list['listen_count'] > 10000) {
+                $returnResult['data'][$key]['listen_count'] = ($list['listen_count']/10000)."万";
+            }else {
+                $returnResult['data'][$key]['listen_count'] = $list['listen_count'];
+            }
             $returnResult['data'][$key]['song_list']    = $list['song_list'];
             $returnResult['data'][$key]['thumb']        = $list['thumb'];
         }
