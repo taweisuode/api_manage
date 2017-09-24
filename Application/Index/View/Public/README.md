@@ -56,11 +56,13 @@ limits = 6//返回条目数量
 GET
 
 http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.6.5.0&method=baidu.ting.album.getAlbumInfo&format=json&album_id=67909
-
-参数：
-
 from  android
 version   5.6.5.0
 method    baidu.ting.album.getAlbumInfo
 format    json
 album_id  67909
+
+十一.推荐歌单准确版
+http://music.baidu.com/data/search/playlist
+参数：
+tag=午后

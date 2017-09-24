@@ -11,7 +11,7 @@ class MainController extends Controller {
     public function indexAction() {
         $this->view->show();
     }
-    //获取列表
+    //获取首页推荐页面轮播图列表
     public function recommendImageAction() {
         $data = $_GET;
         $validate_params = array(
@@ -23,6 +23,23 @@ class MainController extends Controller {
             $list[$key]['img_url'] = WEBSITE_HOST."Public/Files/Upload/".$val['img_url'];
         }
         return $this->showApiResult($list);
+    }
+    public function recommendSongAction() {
+        $randomKeyArr = ["浪漫","情歌","午后","摇滚","rap","失恋"];
+        shuffle($randomKeyArr);
+        $url = "http://music.baidu.com/data/search/playlist";
+        $returnResult = array();
+        foreach($randomKeyArr as $key => $val) {
+            $data = json_decode(http($url,array('tag'=>$randomKeyArr[$key])),true);
+            $random = rand(0,5);
+            $list = $data['list'][$random];
+            $returnResult['data'][$key]['playlist_id']  = $list['playlist_id'];
+            $returnResult['data'][$key]['title']        = $list['title'];
+            $returnResult['data'][$key]['listen_count'] = $list['listen_count'];
+            $returnResult['data'][$key]['song_list']    = $list['song_list'];
+            $returnResult['data'][$key]['thumb']        = $list['thumb'];
+        }
+        return $this->showApiResult($returnResult);
     }
     //搜索关键字
     public function searchAction() {
