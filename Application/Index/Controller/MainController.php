@@ -33,15 +33,15 @@ class MainController extends Controller {
             $data = json_decode(http($url,array('tag'=>$randomKeyArr[$key])),true);
             $random = rand(0,5);
             $list = $data['list'][$random];
-            $returnResult['data'][$key]['playlist_id']  = $list['playlist_id'];
-            $returnResult['data'][$key]['title']        = $list['title'];
+            $returnResult[$key]['playlist_id']  = $list['playlist_id'];
+            $returnResult[$key]['title']        = $list['title'];
             if($list['listen_count'] > 10000) {
-                $returnResult['data'][$key]['listen_count'] = intval($list['listen_count']/10000)."万";
+                $returnResult[$key]['listen_count'] = intval($list['listen_count']/10000)."万";
             }else {
-                $returnResult['data'][$key]['listen_count'] = $list['listen_count'];
+                $returnResult[$key]['listen_count'] = $list['listen_count'];
             }
-            $returnResult['data'][$key]['song_list']    = $list['song_list'];
-            $returnResult['data'][$key]['thumb']        = $list['thumb'];
+            $returnResult[$key]['song_list']    = $list['song_list'];
+            $returnResult[$key]['thumb']        = $list['thumb'];
         }
         return $this->showApiResult($returnResult);
     }
