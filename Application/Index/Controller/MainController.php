@@ -24,6 +24,7 @@ class MainController extends Controller {
         }
         return $this->showApiResult($list);
     }
+    //首页推荐歌单展示页接口
     public function recommendSongAction() {
         $randomKeyArr = ["90后","情歌","午后","摇滚","rap","失恋"];
         shuffle($randomKeyArr);
@@ -44,6 +45,31 @@ class MainController extends Controller {
             $returnResult[$key]['thumb']        = $list['thumb'];
         }
         return $this->showApiResult($returnResult);
+    }
+    //首页推荐歌单列表页接口
+    public function recommendSongListAction() {
+        $data = $_GET;
+        $validate_params = array(
+            'playlist_id#int|required',
+        );
+        $validate_data = $this->validate->check($validate_params, $data);
+        $url = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&format=json&method=baidu.ting.diy.gedanInfo&listid=".$validate_data['playlist_id'];
+        $data = json_decode(http($url),true);
+        $result['listid'] = $data['listid'];
+        $result['title'] = $data['title'];
+        $result['thumb'] = $data['pic_300'];
+        $result['listenum'] = $data['listenum'];
+        $result['tag'] = $data['tag'];
+        $result['desc'] = $data['desc'];
+        foreach($data['content'] as $key => $val) {
+            $result['list'][$key]['title'] = $val['title'];
+            $result['list'][$key]['song_id'] = $val['song_id'];
+            $result['list'][$key]['author'] = $val['author'];
+            $result['list'][$key]['album_id'] = $val['album_id'];
+            $result['list'][$key]['album_title'] = $val['album_title'];
+            $result['list'][$key]['all_artist_id'] = $val['all_artist_id'];
+        }
+        return $this->showApiResult($result);
     }
     //搜索关键字
     public function searchAction() {

@@ -39,7 +39,7 @@
      * @param  string $method 请求方法GET/POST
      * @return array  $data   响应数据
      */
-    function http($url, $params, $method = 'GET', $header = array(), $multi = false){
+    function http($url, $params = array(), $method = 'GET', $header = array(), $multi = false){
         $opts = array(
             CURLOPT_TIMEOUT        => 30,
             CURLOPT_RETURNTRANSFER => 1,
@@ -51,7 +51,11 @@
         /* 根据请求类型设置特定参数 */
         switch(strtoupper($method)){
             case 'GET':
-                $opts[CURLOPT_URL] = $url . '?' . http_build_query($params);
+                if($params != null) {
+                    $opts[CURLOPT_URL] = $url . '?' . http_build_query($params);
+                }else {
+                    $opts[CURLOPT_URL] = $url;
+                }
                 break;
             case 'POST':
                 //判断是否传输文件
