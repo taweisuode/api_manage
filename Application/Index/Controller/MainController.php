@@ -22,7 +22,7 @@ class MainController extends Controller {
         foreach($list as $key => $val) {
             $list[$key]['img_url'] = WEBSITE_HOST."Public/Files/Upload/".$val['img_url'];
         }
-        return $this->showApiResult($list);
+        $this->showApiResult($list);
     }
     //首页推荐歌单展示页接口
     public function recommendSongAction() {
@@ -44,7 +44,7 @@ class MainController extends Controller {
             $returnResult[$key]['song_list']    = $list['song_list'];
             $returnResult[$key]['thumb']        = $list['thumb'];
         }
-        return $this->showApiResult($returnResult);
+        $this->showApiResult($returnResult);
     }
     //首页推荐歌单列表页接口
     public function recommendSongListAction() {
@@ -69,7 +69,7 @@ class MainController extends Controller {
             $result['list'][$key]['album_title'] = $val['album_title'];
             $result['list'][$key]['all_artist_id'] = $val['all_artist_id'];
         }
-        return $this->showApiResult($result);
+        $this->showApiResult($result);
     }
     //搜索关键字
     public function searchAction() {
