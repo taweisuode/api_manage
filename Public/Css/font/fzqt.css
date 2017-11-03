@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'fzqt';
+    src: url('fzqtjw-webfont.eot');
+    src: url('fzqtjw-webfont.woff2') format('woff2'),
+    url('fzqtjw-webfont.woff') format('woff'),
+    url('FZQTJW.TTF') format('truetype'),
+    url('fzqtjw-webfont.svg#futuraicg_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
